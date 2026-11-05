@@ -1,0 +1,38 @@
+<article class="recipe-detail">
+  <img class="recipe-image" [src]="recipe().imgUrl" [alt]="recipe().name" />
+
+  <div class="recipe-content">
+    <h2 class="recipe-name">{{ recipe().name }}</h2>
+    <p class="recipe-description">{{ recipe().description }}</p>
+
+    <div class="servings" role="group" aria-label="Ajuste de porções">
+      <span class="servings-label">Porções: {{ servings() }}</span>
+      <button
+        class="servings-button"
+        (click)="decreaseServings()"
+        [attr.aria-label]="'Diminuir porções'"
+      >
+        -
+      </button>
+      <button
+        class="servings-button"
+        (click)="increaseServings()"
+        [attr.aria-label]="'Aumentar porções'"
+      >
+        +
+      </button>
+    </div>
+
+    <section class="ingredients">
+      <h3 class="ingredients-title">Ingredientes</h3>
+      <ul class="ingredients-list">
+        @for (ingredient of adjustedIngredients(); track ingredient.name) {
+          <li class="ingredient-item">
+            <span class="ingredient-name">{{ ingredient.name }}</span>
+            <span class="ingredient-quantity">{{ ingredient.quantity }} {{ ingredient.unit }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+  </div>
+</article>

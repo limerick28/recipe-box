@@ -1,0 +1,10 @@
+<h1>{{ title() }}</h1>
+
+<button (click)="showCarbonara()">Carbonara</button>
+<button (click)="showCaprese()">Caprese</button>
+
+@if (recipe().isFavorite) {
+  <p class="favorite-indicator" role="status">★ Receita favorita</p>
+}
+
+<app-recipe-detail [recipe]="recipe()" />
